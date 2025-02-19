@@ -8,9 +8,6 @@
 /*----------------------------------------------------------------------------*/
 
 #include "vex.h"
-#include <robot-config.h>
-#include <string>
-#include <sstream>
 
 using namespace vex;
 
