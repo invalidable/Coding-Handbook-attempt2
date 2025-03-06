@@ -65,17 +65,41 @@ void usercontrol(void)
   // User control code here, inside the loop
   while (1)
   {
-    // This is the main execution loop for the user control program.
-    // Each time through the loop your program should update motor + servo
-    // values based on feedback from the joysticks.
+    float throttle = Controller.Axis3.value();
+    if (throttle < 5 && throttle > -5)
+    {
+      throttle = 0;
+    }
+    throttle = throttle / 1.27;
+    float turn = Controller.Axis1.value();
+    if (turn < 5 && turn > -5)
+    {
+      turn = 0;
+    }
+    turn = turn / 1.27;
 
-    // ........................................................................
-    // Insert user code here. This is where you use the joystick values to
-    // update your motors, etc.
-    // ........................................................................
+    throttle = pow(throttle, 3) / 10000;
+    turn = pow(turn, 3) / 10000;
 
-    wait(20, msec); // Sleep the task for a short amount of time to
-                    // prevent wasted resources.
+    float leftpow;
+    float rightpow;
+
+    leftpow = throttle + turn;
+    rightpow = throttle - turn;
+
+    if (leftpow == 0)
+    {
+      Left.stop(brake);
+    }
+    if (rightpow == 0)
+    {
+      Right.stop(brake);
+    }
+
+    Left.spin(fwd, (leftpow * 0.12), volt);
+    Right.spin(fwd, (rightpow * 0.12), volt);
+
+    wait(20, msec);
   }
 }
 
