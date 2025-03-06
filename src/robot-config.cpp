@@ -7,7 +7,7 @@ using code = vision::code;
 brain Brain;
 
 controller Controller;
-motor FrontRight = motor(PORT1, ratio6_1, false);
+motor FrontRight = motor(PORT1, ratio6_1, true);
 motor FrontLeft = motor(PORT2, ratio6_1, true);
 motor MiddleRight = motor(PORT3, ratio6_1, false);
 motor MiddleLeft = motor(PORT4, ratio6_1, true);
