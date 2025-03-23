@@ -100,6 +100,7 @@ void pre_auton()
   // Initializing Robot Configuration. DO NOT REMOVE!
   vexcodeInit();
   default_constants();
+  chassis.calibrate_robot();
 
   while (!auto_started)
   {

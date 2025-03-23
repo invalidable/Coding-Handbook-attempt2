@@ -23,22 +23,6 @@ void default_constants()
 }
 
 /**
- * Sets constants to be more effective for odom movements.
- * For functions like drive_to_point(), it's often better to have
- * a slower max_voltage and greater settle_error than you would otherwise.
- */
-
-void odom_constants()
-{
-  default_constants();
-  chassis.heading_max_voltage = 10;
-  chassis.drive_max_voltage = 8;
-  chassis.drive_settle_error = 3;
-  chassis.boomerang_lead = .5;
-  chassis.drive_min_voltage = 0;
-}
-
-/**
  * The expected behavior is to return to the start position.
  */
 
@@ -115,7 +99,7 @@ void odom_test()
 
 void tank_odom_test()
 {
-  odom_constants();
+  default_constants();
   chassis.set_coordinates(0, 0, 0);
   chassis.turn_to_point(24, 24);
   chassis.drive_to_point(24, 24);
@@ -130,7 +114,7 @@ void tank_odom_test()
 
 void holonomic_odom_test()
 {
-  odom_constants();
+  default_constants();
   chassis.set_coordinates(0, 0, 0);
   chassis.holonomic_drive_to_pose(0, 18, 90);
   chassis.holonomic_drive_to_pose(18, 0, 180);

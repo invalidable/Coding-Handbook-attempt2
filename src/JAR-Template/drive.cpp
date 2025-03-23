@@ -481,6 +481,16 @@ void Drive::set_coordinates(float X_position, float Y_position, float orientatio
   odom_task = task(position_track_task);
 }
 
+void Drive::calibrate_robot()
+{
+  R_ForwardTracker.resetPosition();
+  R_SidewaysTracker.resetPosition();
+  Gyro.calibrate();
+  while (Gyro.isCalibrating())
+    wait(50, vex::timeUnits::msec);
+  Controller.rumble("....");
+}
+
 /**
  * Gets the robot's x.
  *
