@@ -6,11 +6,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <algorithm>
 
 #include <v5.h>
 #include <v5_vcs.h>
 
 #include "robot-config.h"
+#include "JAR-Template/odom.h"
+#include "JAR-Template/drive.h"
+#include "JAR-Template/util.h"
+#include "JAR-Template/PID.h"
+#include "autons.h"
 
 #define waitUntil(condition) \
   do                         \
